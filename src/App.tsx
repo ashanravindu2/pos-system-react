@@ -9,7 +9,8 @@ import {Logout} from "./components/Logout.tsx";
 import {Dashboard} from "./pages/Dashboard.tsx";
 import {Error} from "./pages/Error.tsx";
 import {RootLayout} from "./components/RootLayout.tsx";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 function App() {
 
 const routes = createBrowserRouter([
@@ -33,6 +34,8 @@ const routes = createBrowserRouter([
   return (
       <>
           <RouterProvider router={routes}/>
+
+
 
       </>
   )

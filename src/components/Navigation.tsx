@@ -5,12 +5,12 @@ export function Navigation() {
     return (
         <>
             <header className={''}>
-                <div>
-                    <h1><img className={'w-12'} src={'src/assets/Staylinked.png'}/>Smart Farming</h1>
-                    <div>
-                        <img src={'src/assets/dashboardImg/user (2).png'}/>
+                <div className={''}>
+                    <h1 className={'flex flex-row justify-center items-center pt-5 mr-6'}><img className={'w-12 mr-2 '} src={'src/assets/Staylinked.png'}/>Smart Farming</h1>
+                    <div className={'flex flex-row justify-center items-center pt-5 text-sm gap-2'}>
+                        <img className={'w-8 h-8'} src={'src/assets/dashboardImg/user (2).png'}/>
                         <h2>John Silva</h2>
-                        <h3>Manager</h3>
+                        <h3 className={'font-semibold '}>Manager</h3>
                     </div>
                 </div>
 
@@ -27,6 +27,9 @@ export function Navigation() {
                     </ul>
                 </nav>
             </header>
+
+
+
         </>
     );
 }
