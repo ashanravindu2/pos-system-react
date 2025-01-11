@@ -1,0 +1,5 @@
+export function CropDetails() {
+    return (
+        <></>
+    );
+}
