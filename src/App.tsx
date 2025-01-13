@@ -5,7 +5,6 @@ import {Crops} from "./pages/Crops.tsx";
 import {Vehicle} from "./pages/Vehicle.tsx";
 import {Equipment} from "./pages/Equipment.tsx";
 import {CropDetails} from "./pages/CropDetails.tsx";
-import {Logout} from "./components/Logout.tsx";
 import {Dashboard} from "./pages/Dashboard.tsx";
 import {Error} from "./pages/Error.tsx";
 import {RootLayout} from "./components/RootLayout.tsx";
@@ -25,7 +24,6 @@ const routes = createBrowserRouter([
             {path: '/vehicle', element: <Vehicle/>},
             {path: '/equipment', element: <Equipment/>},
             {path: '/cropDetails', element: <CropDetails/>},
-            {path: '/logout', element: <Logout/>},
             {path: '*', element: <Error/>}
         ]
     },

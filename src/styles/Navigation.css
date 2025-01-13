@@ -6,11 +6,10 @@
 header {
     background-color: #096a2c;
     color: #ffffff;
-    width: 13%;
-    flex-shrink: 0;
+    width: auto;
     left: 0;
     top: 0;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 nav ul{
