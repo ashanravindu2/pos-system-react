@@ -3,15 +3,23 @@ import {ChangeEvent, useState} from "react";
 import {EquipmentSavePopUp} from "../components/EquipmentSavePopUp.tsx";
 import {EquipmentUpdatePopUp} from "../components/EquipmentUpdatePopUp.tsx";
 import {ViewEquipPopUp} from "../components/ViewEquipPopUp.tsx";
+import {handleDeleteData} from "../components/PopUpMessage.tsx";
+
 
 export function Equipment() {
     const [searchValue, setSearchValue ] = useState('');
     const [PopupSaveVisible, setShowSave] = useState(false);
     const [PopUpUpdateVisible, setShowUpdate] = useState(false);
     const [PopUpViewStaffVisible, setShowViewEuip] = useState(false);
+    const [equipToDelete, setEquipToDelete] = useState<string | null>(null); //delete eka mekem ghnnone
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value);
+    };
+
+    const handleDelete = (equipId: string) => {
+        setEquipToDelete(equipId); // Set the staff ID for deletion
+        handleDeleteData(equipId , 'Equipment'); // Call the delete confirmation popup
     };
     return (
         <>
@@ -50,7 +58,7 @@ export function Equipment() {
                                         />
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" fill="none"
-
+                                         onClick={() => handleDelete("ST5bc69960-9406-44ec")}
                                     >
                                         <path
                                             d="M14.8885 6.78675L14.5525 16.0492C14.5239 16.8425 14.1569 17.5944 13.5295 18.1453C12.9021 18.6962 12.0636 19.0028 11.192 19H4.80714C3.93613 19.0028 3.09814 18.6967 2.47082 18.1464C1.8435 17.5961 1.47616 16.845 1.44668 16.0523L1.11063 6.78675C1.10328 6.58385 1.18474 6.38659 1.33709 6.23839C1.48945 6.09018 1.70021 6.00315 1.92302 5.99646C2.14584 5.98976 2.36244 6.06394 2.5252 6.20268C2.68795 6.34142 2.78351 6.53335 2.79086 6.73626L3.12691 16.001C3.14364 16.3965 3.32803 16.7707 3.64134 17.045C3.95465 17.3194 4.3725 17.4725 4.80714 17.4722H11.192C11.6272 17.4724 12.0456 17.3189 12.359 17.0439C12.6724 16.769 12.8564 16.394 12.8722 15.9979L13.2083 6.73626C13.2156 6.53335 13.3112 6.34142 13.474 6.20268C13.6367 6.06394 13.8533 5.98976 14.0761 5.99646C14.2989 6.00315 14.5097 6.09018 14.6621 6.23839C14.8144 6.38659 14.8959 6.58385 14.8885 6.78675ZM16 3.70437C16 3.90727 15.9115 4.10187 15.7539 4.24534C15.5964 4.38882 15.3827 4.46942 15.1599 4.46942H0.840115C0.617303 4.46942 0.403616 4.38882 0.246064 4.24534C0.0885117 4.10187 0 3.90727 0 3.70437C0 3.50147 0.0885117 3.30687 0.246064 3.1634C0.403616 3.01993 0.617303 2.93932 0.840115 2.93932H3.44447C3.71066 2.93998 3.9676 2.85042 4.16528 2.68808C4.36296 2.52574 4.48724 2.30223 4.51394 2.06105C4.57594 1.49528 4.86701 0.970801 5.33044 0.589789C5.79388 0.208777 6.39648 -0.00147143 7.02085 7.75214e-06H8.97831C9.60268 -0.00147143 10.2053 0.208777 10.6687 0.589789C11.1322 0.970801 11.4232 1.49528 11.4852 2.06105C11.5119 2.30223 11.6362 2.52574 11.8339 2.68808C12.0316 2.85042 12.2885 2.93998 12.5547 2.93932H15.159C15.3819 2.93932 15.5955 3.01993 15.7531 3.1634C15.9106 3.30687 15.9992 3.50147 15.9992 3.70437H16ZM5.97238 2.93932H10.0285C9.91806 2.70961 9.84586 2.4662 9.81423 2.21712C9.79342 2.02854 9.69648 1.85371 9.5422 1.7265C9.38792 1.59929 9.18728 1.52876 8.97915 1.52857H7.02169C6.81356 1.52876 6.61292 1.59929 6.45864 1.7265C6.30436 1.85371 6.20742 2.02854 6.18661 2.21712C6.15471 2.46624 6.08307 2.70965 5.97238 2.93932Z"

@@ -3,6 +3,7 @@ import { SearchBar } from "../components/SearchBar.tsx";
 import {StaffSavePopUp} from "../components/StaffSavePopUp.tsx";
 import {StaffUpdatePopUp} from "../components/StaffUpdatePopUp.tsx";
 import {ViewStaffPopUp} from "../components/ViewStaffPopUp.tsx";
+import {handleDeleteData} from "../components/PopUpMessage.tsx";
 
 
 
@@ -12,15 +13,17 @@ export function Staff() {
     const [PopupSaveVisible, setShowSave] = useState(false);
     const [PopUpUpdateVisible, setShowUpdate] = useState(false);
     const [PopUpViewStaffVisible, setShowViewStaff] = useState(false);
-    // const [PopupMessageVisible, setShowMessage] = useState(false);
-
+    const [staffToDelete, setStaffToDelete] = useState<string | null>(null); //delete eka mekem ghnnone
 
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value);
     };
 
-
+    const handleDelete = (staffId: string) => {
+        setStaffToDelete(staffId); // Set the staff ID for deletion
+        handleDeleteData(staffId , 'Staff'); // Call the delete confirmation popup
+    };
 
 
     return (
@@ -67,6 +70,7 @@ export function Staff() {
                                     />
                                 </svg>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" fill="none"
+                                     onClick={() => handleDelete("ST5bc69960-9406-44ec")}
 
                                 >
                                     <path

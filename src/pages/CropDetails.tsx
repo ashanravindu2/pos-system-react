@@ -1,17 +1,33 @@
 import {SearchBar} from "../components/SearchBar.tsx";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {CropDetailsSavePopUp} from "../components/CropDetailsSavePopUp.tsx";
 import {CropDetailsUpdatePopUp} from "../components/CropDetailsUpdatePopUp.tsx";
 import {ViewCropDetailsPopUp} from "../components/ViewCropDetailsPopUp.tsx";
+import {handleDeleteData} from "../components/PopUpMessage.tsx";
+import '../styles/Animation.css'
 
 export function CropDetails() {
     const [searchValue, setSearchValue] = useState('');
     const [PopupSaveVisible, setShowSave] = useState(false);
     const [PopUpUpdateVisible, setShowUpdate] = useState(false);
     const [PopUpViewStaffVisible, setShowViewCropDetails] = useState(false);
+    const [cropToDelete, setCropToDelete] = useState<string | null>(null); //delete eka mekem ghnnone
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000); // Set the duration for the animation
+        return () => clearTimeout(timer);
+    }, []);
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value);
+    };
+
+    const handleDelete = (staffId: string) => {
+        setCropToDelete(staffId); // Set the staff ID for deletion
+        handleDeleteData(staffId , 'Logs'); // Call the delete confirmation popup
     };
     return (
         <>
@@ -22,7 +38,7 @@ export function CropDetails() {
                 onInputChange={handleInputChange}
                 onButtonClick={() => setShowSave(true)}
             />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-40 ml-4 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-40 ml-4  ">
 
                 {/*added*/}
                 <div className="bg-white rounded-lg  overflow-hidden shadow-2xl ">
@@ -45,6 +61,7 @@ export function CropDetails() {
                                 />
                             </svg>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" fill="none"
+                                 onClick={() => handleDelete("ST5bc69960-9406-44ec")}
 
                             >
                                 <path
