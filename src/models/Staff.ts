@@ -13,11 +13,7 @@ export class Staff {
     gender: Gender;
     joinedDate: Date;
     DOB: Date;
-    addressLine1: string;
-    addressLine2: string;
-    addressLine3: string;
-    addressLine4: string;
-    addressLine5: string;
+    addressLine: string;
     contactNo: string;
     email: string;
     role: Role;
@@ -34,11 +30,7 @@ export class Staff {
         gender: Gender,
         joinedDate: Date,
         DOB: Date,
-        addressLine1: string,
-        addressLine2: string,
-        addressLine3: string,
-        addressLine4: string,
-        addressLine5: string,
+        addressLine: string,
         contactNo: string,
         email: string,
         role: Role,
@@ -54,11 +46,7 @@ export class Staff {
         this.gender = gender;
         this.joinedDate = joinedDate;
         this.DOB = DOB;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.addressLine3 = addressLine3;
-        this.addressLine4 = addressLine4;
-        this.addressLine5 = addressLine5;
+        this.addressLine = addressLine;
         this.contactNo = contactNo;
         this.email = email;
         this.role = role;
