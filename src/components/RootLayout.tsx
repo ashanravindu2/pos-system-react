@@ -9,10 +9,10 @@ export function RootLayout() {
         <>
             <div className={' grid-cols-2 flex'}>
 
-                    <Navigation/>
+                <Navigation/>
 
                 <div className={'ml-56  flex'}>
-                        <Outlet/>
+                    <Outlet/>
                 </div>
 
 

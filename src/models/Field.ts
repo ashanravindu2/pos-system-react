@@ -1,6 +1,6 @@
 import { Crop } from './Crop';
 import { Equipment } from './Equipment';
-import { Staff } from './Staff';
+import { Staff } from './Staff.ts';
 import { CropDetails } from './CropDetails';
 
 export class Field {

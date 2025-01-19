@@ -6,7 +6,9 @@ import StaffSlice from "../reducers/StaffSlice.ts";
 export const store = configureStore({
     reducer: {
         staff: StaffSlice,
-    }
+    },
+
 });
 
-export default store;
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

@@ -1,72 +1,51 @@
-import { Staff } from "../models/Staff.ts";
+
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { add } from "../reducers/StaffSlice.ts";
+
+import { saveStaff} from "../reducers/StaffSlice.ts";
 import { useNavigate } from "react-router-dom";
-import {Equipment} from "../models/Equipment.ts";
-import {Vehicle} from "../models/Vehicle.ts";
+import {useState} from "react";
+import {Staff} from "../models/Staff.ts";
 
 interface StaffSavePopUpProps {
     onClose: () => void;
 }
 
+
+
+
+
 export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
-    const dispatch = useDispatch();
+
     const navigate = useNavigate();
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [designation, setDesignation] = useState("");
-    const [gender, setGender] = useState("");
-    const [joinDate, setJoinDate] = useState("");
-    const [DOB, setDOB] = useState("");
-    const [addressLine, setAddressLine] = useState("");
-    const [contactNo, setContactNo] = useState("");
-    const [email, setEmail] = useState("");
-    const [role, setRole] = useState("");
-    const [field, setField] = useState<string[]>([]);
-    const [cropDetails, setCropDetails] = useState<string[]>([]);
-    const [equipment, setEquipment] = useState<Equipment | null>(null);
-    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
-    function onSave() {
-        const newStaff = new Staff(
-            "ST-" + Math.floor(Math.random() * 1000000),
-            firstName,
-            lastName,
-            designation,
-            gender,
-            new Date(joinDate),
-            new Date(DOB),
-            addressLine,
-            contactNo,
-            email,
-            role,
-            field,
-            cropDetails,
-            equipment,
-            vehicles
-        );
 
-        if (
-            firstName === "" ||
-            lastName === "" ||
-            designation === "" ||
-            gender === "" ||
-            joinDate === "" ||
-            DOB === "" ||
-            addressLine === "" ||
-            contactNo === "" ||
-            email === "" ||
-            role === ""
-        ) {
-            alert("Please fill all the fields");
-            return;
-        }
+    const [staffMember, setStaffMember] = useState<Staff>({
+        staffId: "STAFF",
+        firstName: "",
+        lastName: "",
+        designation: "",
+        joinDate: "",
+        dob: "",
+        gender: "",
+        Address: "",
+        contactNo: "",
+        email: "",
+        role: "",
+    });
+    const dispatch = useDispatch();
 
-        console.log(newStaff.firstName);
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setStaffMember((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
-        dispatch(add(newStaff));
+
+    const onSave=()=> {
+        dispatch(saveStaff(staffMember));
         navigate("/staff");
     }
 
@@ -83,7 +62,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                                 type="text"
                                 className="border border-gray-300 rounded px-3 py-2"
                                 placeholder="Enter First Name"
-                                onChange={(e) => setFirstName(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Last Name */}
@@ -93,7 +72,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                                 type="text"
                                 className="border border-gray-300 rounded px-3 py-2"
                                 placeholder="Enter Last Name"
-                                onChange={(e) => setLastName(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Designation */}
@@ -103,7 +82,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                                 type="text"
                                 className="border border-gray-300 rounded px-3 py-2"
                                 placeholder="Enter Designation"
-                                onChange={(e) => setDesignation(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Join Date */}
@@ -112,7 +91,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                             <input
                                 type="date"
                                 className="border border-gray-300 rounded px-3 py-2"
-                                onChange={(e) => setJoinDate(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Date of Birth */}
@@ -121,7 +100,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                             <input
                                 type="date"
                                 className="border border-gray-300 rounded px-3 py-2"
-                                onChange={(e) => setDOB(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Gender */}
@@ -129,7 +108,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                             <label className="text-sm font-semibold mb-1">Gender</label>
                             <select
                                 className="border border-gray-300 rounded px-3 py-2"
-                                onChange={(e) => setGender(e.target.value)}
+                                onChange={handleChange}
                             >
                                 <option value="">Select Gender</option>
                                 <option value="male">Male</option>
@@ -139,12 +118,12 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                         {/* Address */}
                         <div className="col-span-2 flex flex-col">
                             <label className="text-sm font-semibold mb-1">Address</label>
-                            <textarea
+                            <input
+                                type="text"
                                 className="border border-gray-300 rounded px-3 py-2"
-                                placeholder="Enter Address"
-                                rows={2}
-                                onChange={(e) => setAddressLine(e.target.value)}
-                            ></textarea>
+                                placeholder="Enter Contact Number"
+                                onChange={handleChange}
+                            />
                         </div>
                         {/* Contact No */}
                         <div className="flex flex-col">
@@ -153,7 +132,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                                 type="text"
                                 className="border border-gray-300 rounded px-3 py-2"
                                 placeholder="Enter Contact Number"
-                                onChange={(e) => setContactNo(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Email */}
@@ -163,7 +142,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                                 type="email"
                                 className="border border-gray-300 rounded px-3 py-2"
                                 placeholder="Enter Email Address"
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={handleChange}
                             />
                         </div>
                         {/* Role */}
@@ -171,7 +150,7 @@ export function StaffSavePopUp({ onClose }: StaffSavePopUpProps) {
                             <label className="text-sm font-semibold mb-1">Role</label>
                             <select
                                 className="border border-gray-300 rounded px-3 py-2"
-                                onChange={(e) => setRole(e.target.value)}
+                                onChange={handleChange}
                             >
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>

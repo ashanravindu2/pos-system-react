@@ -1,5 +1,5 @@
 import { Field } from './Field';
-import { Staff } from './Staff';
+import { Staff } from './Staff.ts';
 
 export class Equipment {
     equipmentId: string;

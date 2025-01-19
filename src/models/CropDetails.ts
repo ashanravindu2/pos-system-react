@@ -1,6 +1,6 @@
 import { Field } from './Field';
 import { Crop } from './Crop';
-import { Staff } from './Staff';
+import { Staff } from './Staff.ts';
 
 export class CropDetails {
     logCode: string;

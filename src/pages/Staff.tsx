@@ -8,12 +8,15 @@ import {handleDeleteData} from "../components/PopUpMessage.tsx";
 
 
 
+
+
 export function Staff() {
     const [searchValue, setSearchValue ] = useState('');
     const [PopupSaveVisible, setShowSave] = useState(false);
     const [PopUpUpdateVisible, setShowUpdate] = useState(false);
     const [PopUpViewStaffVisible, setShowViewStaff] = useState(false);
     const [staffToDelete, setStaffToDelete] = useState<string | null>(null); //delete eka mekem ghnnone
+
 
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +33,7 @@ export function Staff() {
         <>
             <SearchBar
                 pagename="Staff Management"
-                buttonName="Add Customer"
+                buttonName="Add Staff"
                 inputValue={searchValue}
                 onInputChange={handleInputChange}
                 // onButtonClick={addStaffHandle()=> setShowSave(true)}
@@ -38,6 +41,8 @@ export function Staff() {
 
             />
 
+
+       {/*print("staff", staff);*/}
 
 
             <div className=" flex justify-center mt-52 ml-10 ">

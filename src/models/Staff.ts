@@ -1,58 +1,27 @@
-import { Gender } from './Gender';
-import { Role } from './Role';
-import { Field } from './Field';
-import { CropDetails } from './CropDetails';
-import { Equipment } from './Equipment';
-import { Vehicle } from './Vehicle';
-
 export class Staff {
-    id: string;
+    staffId: string;
     firstName: string;
     lastName: string;
     designation: string;
-    gender: Gender;
-    joinedDate: Date;
-    DOB: Date;
-    addressLine: string;
+    joinDate: string;
+    dob: string;
+    gender: string;
+    Address: string;
     contactNo: string;
     email: string;
-    role: Role;
-    field: Field[];
-    cropDetails: CropDetails[];
-    equipment: Equipment;
-    vehicles: Vehicle[];
+    role: string;
 
-    constructor(
-        id: string,
-        firstName: string,
-        lastName: string,
-        designation: string,
-        gender: Gender,
-        joinedDate: Date,
-        DOB: Date,
-        addressLine: string,
-        contactNo: string,
-        email: string,
-        role: Role,
-        field: Field[],
-        cropDetails: CropDetails[],
-        equipment: Equipment,
-        vehicles: Vehicle[]
-    ) {
-        this.id = id;
+    constructor(staffId: string, firstName: string, lastName: string, designation: string, joinDate: string , dob: string,gender: string, Address: string, contactNo: string, email: string, role: string) {
+        this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.designation = designation;
+        this.joinDate = joinDate;
+        this.dob = dob;
         this.gender = gender;
-        this.joinedDate = joinedDate;
-        this.DOB = DOB;
-        this.addressLine = addressLine;
+        this.Address = Address;
         this.contactNo = contactNo;
         this.email = email;
         this.role = role;
-        this.field = field;
-        this.cropDetails = cropDetails;
-        this.equipment = equipment;
-        this.vehicles = vehicles;
     }
 }
