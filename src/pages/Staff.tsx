@@ -15,7 +15,7 @@ export function Staff() {
     const [PopupSaveVisible, setShowSave] = useState(false);
     const [PopUpUpdateVisible, setShowUpdate] = useState(false);
     const [PopUpViewStaffVisible, setShowViewStaff] = useState(false);
-    const [staffToDelete, setStaffToDelete] = useState<string | null>(null); //delete eka mekem ghnnone
+    const [staffToDelete, setStaffToDelete] = useState<string | null>(null);
 
 
 
